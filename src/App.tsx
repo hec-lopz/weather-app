@@ -1,16 +1,17 @@
 import React from "react";
 
+import Header from "./components/Header";
+import Highlights from "./components/Highlights";
+import CurrentWeather from "./components/CurrentWeather";
+import FutureWeather from "./components/FutureWeather";
+
 function App() {
   return (
     <>
-      <header>
-        <nav>
-          <button></button>
-        </nav>
-      </header>
-      <main className="relative w-screen min-h-screen  bg-secondary">
-        <div className="absolute bg-clouds opacity-10 bg-no-repeat bg-center bg-contain -left-16 -right-16 top-0 bottom-1/2"></div>
-      </main>
+      <Header />
+      <CurrentWeather />
+      <FutureWeather />
+      <Highlights />
     </>
   );
 }
