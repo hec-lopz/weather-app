@@ -7,7 +7,7 @@ const DateLocation: React.FC<any> = ({ date, location }) => {
   const convertedDate = fromUnixTime(date);
 
   useEffect(() => {
-    const query = `${GeocodeAPI}?latlng=${location.lat},${location.lon}&result_type=locality&key=AIzaSyBWHFsI6gIuGpAXlnBblbyatfrWgzOq-tA`;
+    const query = `${GeocodeAPI}?latlng=${location.lat},${location.lon}&result_type=locality&key=${process.env.REACT_APP_GEOCODE_API}`;
     axios.get(query).then((res) => {
       const city = res.data.results[0].formatted_address;
       console.log(city);

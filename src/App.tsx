@@ -34,7 +34,7 @@ function App() {
           lon: location.lon,
           exclude: "minutely,hourly,alerts",
           units: "metric",
-          appid: "a5cc4021b7947e9e101839ca1270a161",
+          appid: process.env.REACT_APP_WEATHER_API,
         },
       })
       .then((res) => {
