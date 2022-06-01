@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="bg-secondary  flex items-center px-3 py-4">
+    <header className="bg-secondary  flex items-center px-3 py-4 ">
       <nav className="min-h-min w-full flex justify-between ">
         <button className="shadow-[0px_4px_4px_rgba(0,0,0,0.25)] w-40 h-10 bg-grayBtn text-white-custom">
           Search for places
