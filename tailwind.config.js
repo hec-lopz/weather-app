@@ -18,6 +18,9 @@ module.exports = {
         secondary: "#1E213A",
         grayBtn: "#6E707A",
         searchBtn: "#3C47E9",
+        yellow: {
+          custom: "#FFEC65",
+        },
       },
       textColor: {
         primary: "#E7E7EB",
