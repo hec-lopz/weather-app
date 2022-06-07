@@ -1,5 +1,7 @@
-const Details = ({ children }) => (
-  <div className=" flex-grow-0 justify-self-center lg:m-auto">{children}</div>
+const DetailsSection = ({ children }) => (
+  <div className=" grow justify-self-center lg:m-auto lg:max-w-[50%]">
+    {children}
+  </div>
 );
 
-export default Details;
+export default DetailsSection;
