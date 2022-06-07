@@ -6,6 +6,9 @@ module.exports = {
         Raleway: "Raleway, sans-serif",
       },
       colors: {
+        gray: {
+          custom: "#616475",
+        },
         white: {
           custom: "#E7E7EB",
         },

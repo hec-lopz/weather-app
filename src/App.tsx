@@ -9,6 +9,7 @@ import Layout from "./containers/Layout";
 import Main from "./containers/MainSection";
 import DetailsSection from "./containers/DetailsSection";
 import Footer from "./containers/Footer";
+import Search from "./components/Search";
 
 type WeatherData = null | {
   lat: number;
@@ -21,6 +22,7 @@ type WeatherData = null | {
   alerts?: Object;
 };
 function App() {
+  let showSearch = false;
   const API = "https://api.openweathermap.org/data/3.0/onecall";
   const [location, setLocation] = useState({ lat: 19.3494, lon: -99.1935 });
   const [weatherData, setWeatherData] = useState({
@@ -51,6 +53,7 @@ function App() {
       <Main>
         <Header />
         <CurrentWeather currentData={weatherData.current} location={location} />
+        {showSearch && <Search />}
       </Main>
       <DetailsSection>
         <FutureWeather dailyData={weatherData.daily} />
