@@ -7,7 +7,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import FutureWeather from "./components/FutureWeather";
 import Layout from "./containers/Layout";
 import Main from "./containers/MainSection";
-import Details from "./containers/DetailsSection";
+import DetailsSection from "./containers/DetailsSection";
 import Footer from "./containers/Footer";
 
 type WeatherData = null | {
@@ -23,10 +23,11 @@ type WeatherData = null | {
 function App() {
   const API = "https://api.openweathermap.org/data/3.0/onecall";
   const [location, setLocation] = useState({ lat: 19.3494, lon: -99.1935 });
-  const [weatherData, setWeatherData] = useState({ current: null });
+  const [weatherData, setWeatherData] = useState({
+    current: null,
+    daily: null,
+  });
   useEffect(() => {
-    //debugger;
-    console.log("Effect");
     axios
       .get(API, {
         params: {
@@ -38,7 +39,6 @@ function App() {
         },
       })
       .then((res) => {
-        console.log("data", res.data);
         setWeatherData(res.data);
       })
       .catch((err) => {
@@ -52,11 +52,11 @@ function App() {
         <Header />
         <CurrentWeather currentData={weatherData.current} location={location} />
       </Main>
-      <Details>
-        <FutureWeather />
-        <Highlights />
+      <DetailsSection>
+        <FutureWeather dailyData={weatherData.daily} />
+        <Highlights weatherData={weatherData.current} />
         <Footer />
-      </Details>
+      </DetailsSection>
     </Layout>
   );
 }
