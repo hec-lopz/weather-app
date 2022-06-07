@@ -20,7 +20,7 @@ const CurrentWeather: React.FC<any> = ({ currentData, location }) => {
   return (
     <CurrentWeatherUi>
       <Temperature temp={currentData.temp} weather={currentData.weather[0]} />
-      <DateLocation date={currentData.dt} location={location} />
+      <DateLocation dt={currentData.dt} location={location} />
     </CurrentWeatherUi>
   );
 };
