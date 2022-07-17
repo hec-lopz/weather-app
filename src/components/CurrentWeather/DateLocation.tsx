@@ -1,10 +1,10 @@
 import axios from "axios";
-import { format, fromUnixTime, isToday } from "date-fns";
 import { useEffect, useState } from "react";
 import useFormatDate from "../../hooks/useFormatDate";
+import { DateLocationProps } from "./models/CurrentWeather.model";
 
 const GeocodeAPI = "https://maps.googleapis.com/maps/api/geocode/json";
-const DateLocation: React.FC<any> = ({ dt, location }) => {
+const DateLocation = ({ dt, location }: DateLocationProps) => {
   const [city, setCity] = useState("");
   const date = useFormatDate(dt);
 

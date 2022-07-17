@@ -1,9 +1,13 @@
 // Las unidades de presión se muestran en mb en mx y us
 
+import { Current } from "../../models/weather.model";
 import HighlightCard from "./HighlightCard";
 import HighlightsUI from "./HighlightsUI";
 
-const Highlights: React.FC<any> = ({ weatherData }) => {
+interface HighlightsProps {
+  weatherData: Current | null;
+}
+const Highlights = ({ weatherData }: HighlightsProps) => {
   if (!weatherData) return <></>;
   return (
     <HighlightsUI>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Header from "./components/Header";
@@ -10,28 +10,19 @@ import Main from "./containers/MainSection";
 import DetailsSection from "./containers/DetailsSection";
 import Footer from "./containers/Footer";
 import Search from "./components/Search";
+import { WeatherAPI } from "./models/weather.model";
 
-type WeatherData = null | {
-  lat: number;
-  lon: number;
-  timezone: string;
-  current?: Object;
-  minutely?: Object;
-  hourly?: Object;
-  daily?: Object;
-  alerts?: Object;
-};
 function App() {
-  let showSearch = false;
-  const API = "https://api.openweathermap.org/data/3.0/onecall";
   const [location, setLocation] = useState({ lat: 19.3494, lon: -99.1935 });
-  const [weatherData, setWeatherData] = useState({
-    current: null,
-    daily: null,
-  });
+  const [weatherData, setWeatherData] = useState<
+    WeatherAPI | { current: null; daily: null }
+  >({ current: null, daily: null });
+  const [showSearch, setShowSearch] = useState(false);
+  const toggleSearchBar = () => setShowSearch((prev) => !prev);
   useEffect(() => {
+    const API = "https://api.openweathermap.org/data/3.0/onecall";
     axios
-      .get(API, {
+      .get<WeatherAPI>(API, {
         params: {
           lat: location.lat,
           lon: location.lon,
@@ -51,9 +42,9 @@ function App() {
   return (
     <Layout>
       <Main>
-        <Header />
+        <Header toggleSearchBar={toggleSearchBar} />
         <CurrentWeather currentData={weatherData.current} location={location} />
-        {showSearch && <Search />}
+        {showSearch && <Search toggleSearchBar={toggleSearchBar} />}
       </Main>
       <DetailsSection>
         <FutureWeather dailyData={weatherData.daily} />

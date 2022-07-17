@@ -1,8 +1,13 @@
 import HighlightCardUI from "./HighlightCardUI";
 import ProgressBar from "./ProgressBar";
 import DirectionWidget from "./DirectionWidget";
+import { HighlightCardProps } from "./models/Highlights.model";
 
-const HighlightCard: React.FC<any> = ({ value, variant, details = {} }) => {
+const HighlightCard: React.FC<any> = ({
+  value,
+  variant,
+  details = {},
+}: HighlightCardProps) => {
   let showProgress, showDirection, title, units;
   const { degrees } = details;
   switch (variant) {
@@ -19,7 +24,7 @@ const HighlightCard: React.FC<any> = ({ value, variant, details = {} }) => {
     case "visibility":
       title = "visibility";
       units = "km";
-      value = (value / 1000).toFixed(1);
+      value = parseFloat((value / 1000).toFixed(1));
       break;
     case "pressure":
       title = "air pressure";
